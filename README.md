@@ -222,6 +222,6 @@ License
 
 This project is distributed "as is" (without warranty). You are free to use, modify, and distribute it for any purpose.
 
-Author: macro
+Author: macros
 
 To contact the developer: Telegram - @imnotyou3
