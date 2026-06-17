@@ -218,9 +218,6 @@ python
 HELP_USERNAME = "@helpingonuser" # replace with the desired username
 
 This variable is used in the "🆘 Help" button in the main menu, as well as in the welcome message. After changing the variable, the bot will automatically use the new contact.
-License
-
-This project is distributed "as is" (without warranty). You are free to use, modify, and distribute it for any purpose.
 
 Author: macros
 
