@@ -1,0 +1,186 @@
+{
+  "vpn": {
+    "title": "🌍 VPN сервера",
+    "items": {
+      "vpn_uk": {
+        "title": "VPN — England",
+        "price": 5.0,
+        "currency": "USD",
+        "type": "secret",
+        "secrets": [
+          "VPN-UK-KEY-1",
+          "VPN-UK-KEY-2"
+        ]
+      },
+      "vpn_ch": {
+        "title": "VPN — Switzerland",
+        "price": 5.0,
+        "currency": "USD",
+        "type": "secret",
+        "secrets": [
+          "VPN-CH-KEY-1"
+        ]
+      },
+      "vpn_se": {
+        "title": "VPN — Sweden",
+        "price": 5.0,
+        "currency": "USD",
+        "type": "secret",
+        "secrets": [
+          "VPN-SE-KEY-1"
+        ]
+      },
+      "vpn_no": {
+        "title": "VPN — Norway",
+        "price": 5.0,
+        "currency": "USD",
+        "type": "secret",
+        "secrets": [
+          "VPN-NO-KEY-1"
+        ]
+      },
+      "vpn_us": {
+        "title": "VPN — USA",
+        "price": 5.0,
+        "currency": "USD",
+        "type": "secret",
+        "secrets": [
+          "VPN-US-KEY-1",
+          "VPN-US-KEY-2"
+        ]
+      }
+    }
+  },
+  "tg": {
+    "title": "⭐ Telegram услуги",
+    "items": {
+      "tg_star_1": {
+        "title": "Telegram Stars — 1",
+        "price": 1.0,
+        "currency": "XTR",
+        "type": "stars",
+        "stars": 1
+      },
+      "tg_star_50": {
+        "title": "Telegram Stars — 50",
+        "price": 50.0,
+        "currency": "XTR",
+        "type": "stars",
+        "stars": 50
+      },
+      "tg_premium": {
+        "title": "Telegram Premium — 1 мес",
+        "price": 7.0,
+        "currency": "USD",
+        "type": "premium",
+        "secrets": [
+          "TG-PREMIUM-KEY-1",
+          "TG-PREMIUM-KEY-2"
+        ]
+      }
+    }
+  },
+  "subs": {
+    "title": "📱 Подписки AI",
+    "items": {
+      "sub_chatgpt": {
+        "title": "ChatGPT Plus — 1 мес",
+        "price": 20.0,
+        "currency": "USD",
+        "type": "secret",
+        "secrets": [
+          "CHATGPT-KEY-1"
+        ]
+      },
+      "sub_gemini": {
+        "title": "Gemini Pro — 1 мес",
+        "price": 10.0,
+        "currency": "USD",
+        "type": "secret",
+        "secrets": [
+          "GEMINI-KEY-1"
+        ]
+      },
+      "sub_claude": {
+        "title": "Claude Pro — 1 мес",
+        "price": 20.0,
+        "currency": "USD",
+        "type": "secret",
+        "secrets": [
+          "CLAUDE-KEY-1"
+        ]
+      },
+      "sub_grok": {
+        "title": "Grok — 1 мес",
+        "price": 8.0,
+        "currency": "USD",
+        "type": "secret",
+        "secrets": [
+          "GROK-KEY-1"
+        ]
+      }
+    }
+  },
+  "cs2": {
+    "title": "🎮 CS2 Prime аккаунты",
+    "items": {
+      "cs2_prime_1": {
+        "title": "CS2 Prime — 1 аккаунт",
+        "price": 15.0,
+        "currency": "USD",
+        "type": "secret",
+        "secrets": [
+          "CS2-PRIME-ACC-1",
+          "CS2-PRIME-ACC-2"
+        ]
+      },
+      "cs2_prime_bulk": {
+        "title": "CS2 Prime — пакет 5",
+        "price": 60.0,
+        "currency": "USD",
+        "type": "secret",
+        "secrets": [
+          "CS2-BULK-1",
+          "CS2-BULK-2",
+          "CS2-BULK-3",
+          "CS2-BULK-4",
+          "CS2-BULK-5"
+        ]
+      }
+    }
+  },
+  "manuals": {
+    "title": "📚 Мануалы",
+    "items": {
+      "manual_ai": {
+        "title": "Мануалы AI",
+        "price": 12.0,
+        "currency": "USD",
+        "type": "manual",
+        "manuals": [
+          "Grok prompts",
+          "Gemini подсказки",
+          "Claude инструкции"
+        ],
+        "secrets": [
+          "MANUAL-AI-1",
+          "MANUAL-AI-2"
+        ]
+      },
+      "manual_security": {
+        "title": "Мануалы безопасности",
+        "price": 15.0,
+        "currency": "USD",
+        "type": "manual",
+        "manuals": [
+          "Настройка VPN",
+          "Анонимный браузинг",
+          "Безопасный доступ"
+        ],
+        "secrets": [
+          "MANUAL-SEC-1"
+        ]
+      }
+    }
+  }
+}
