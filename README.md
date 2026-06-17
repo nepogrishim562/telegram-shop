@@ -2,7 +2,7 @@
 A Telegram bot for selling digital goods: VPN, AI subscriptions (ChatGPT, Gemini, Claude, Grok), CS2 Prime, Telegram Stars/Premium, and manuals. Supports Telegram payments and manual confirmation. Admin panel: adding products, keys, and order fulfillment. Configuration via BOT_TOKEN, ADMIN_IDS, and PROVIDER_TOKEN. Data in JSON
 
 
-elegram Shop Bot
+Telegram Shop Bot
 
 Telegram-бот для автоматизированной продажи цифровых товаров: VPN-ключей, подписок AI, Telegram Stars/Premium, CS2 Prime, мануалов. Поддерживает ручную и автоматическую оплату (Telegram Payments), администрирование, логирование ошибок.
 Основные возможности
@@ -220,8 +220,6 @@ HELP_USERNAME = "@helpingonuser"   # замените на нужный юзер
 
 Эта переменная используется в кнопке «🆘 Помощь» в главном меню, а также в приветственном сообщении. После изменения переменной бот автоматически будет использовать новый контакт.
 Лицензия
-
-Проект распространяется «как есть» (без гарантий). Вы можете свободно использовать, модифицировать и распространять его для любых целей.
 
 Автор: macros
 Контакты для связи с разработчиком: @imnotyou7 - telegram.
