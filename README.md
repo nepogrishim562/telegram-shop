@@ -4,222 +4,224 @@ A Telegram bot for selling digital goods: VPN, AI subscriptions (ChatGPT, Gemini
 
 Telegram Shop Bot
 
-Telegram-бот для автоматизированной продажи цифровых товаров: VPN-ключей, подписок AI, Telegram Stars/Premium, CS2 Prime, мануалов. Поддерживает ручную и автоматическую оплату (Telegram Payments), администрирование, логирование ошибок.
-Основные возможности
+A Telegram bot for automated sales of digital products: VPN keys, AI subscriptions, Telegram Stars/Premium, CS2 Prime, and manuals. Supports manual and automatic payments (Telegram Payments), administration, and error logging.
+Key Features
 
-    🛒 Каталог товаров по категориям с отображением наличия.
+🛒 Product catalog by category with availability display.
 
-    👤 Профиль пользователя с историей последних 10 заказов.
+👤 User profile with a history of the last 10 orders.
 
-    📊 Статистика для администратора (кол-во заказов, выручка, выдано).
+📊 Statistics for the administrator (number of orders, revenue, issued).
 
-    💳 Гибкая оплата: автоматическая через Telegram Payments (для Stars и Premium) или ручное подтверждение с кнопкой «Оплатил(а)».
+💳 Flexible payment: automatic via Telegram Payments (for Stars and Premium) or manual confirmation with the "Paid" button.
 
-    📨 Выдача товаров: автоматическая (для Stars) или вручную администратором (ключи, мануалы, Premium).
+📨 Product delivery: automatic (for Stars) or manual by the administrator (keys, manuals, Premium).
 
-    🛠 Админ-команды для управления заказами, товарами, секретами, мануалами.
+🛠 Admin commands for managing orders, products, secrets, and manuals.
 
-    📄 Политика конфиденциальности и Условия соглашения (встроенные тексты).
+📄 Privacy Policy and Terms of Service (embedded text).
 
-    🐛 Логирование ошибок в SQLite и команда /errors для администраторов.
+🐛 SQLite error logging and the /errors command for administrators.
 
-    🔗 Кнопка техподдержки — ссылка на заданный Telegram-контакт (настраивается одной переменной).
+🔗 Technical support button — a link to a specified Telegram contact (configured with one variable).
 
-Установка и настройка
-Требования
+Installation and Configuration
+Requirements
 
-    Python 3.9+
+Python 3.9+
 
-    Telegram Bot Token (получить у @BotFather)
+Telegram Bot Token (obtain from @BotFather)
 
-    (Опционально) Provider Token для приёма обычных платежей (не Stars) — тоже выдаётся @BotFather.
+(Optional) Provider Token for accepting regular payments (not Stars) — also issued by @BotFather.
 
-Шаг 1. Получение кода
+Step 1. Getting the Code
 
-Склонируйте репозиторий или создайте файл bot.py с кодом из этого проекта.
-Шаг 2. Установка зависимостей
+Clone the repository or create a bot.py file with the code from this project. Step 2. Installing Dependencies
 
-Создайте виртуальное окружение и установите пакет:
+Create a virtual environment and install the package:
 bash
 
 python -m venv venv
-source venv/bin/activate   # Linux/macOS
-# или venv\Scripts\activate для Windows
+source venv/bin/activate # Linux/macOS
+# or venv\Scripts\activate for Windows
 
 pip install aiogram
 
-Если хотите использовать python-dotenv для загрузки .env (вместо ручного парсинга) — установите его дополнительно, но это не обязательно, так как код уже умеет читать .env напрямую.
+If you want to use python-dotenv to load .env (instead of manually parsing it), install it additionally. This is not necessary, as the code already reads .env directly.
 
-    Примечание: Файл requirements.txt, если он есть в проекте, должен содержать только строки с пакетами, например:
-    text
+Note: The requirements.txt file, if present in the project, should only contain lines for packages, for example:
+text
 
-    aiogram>=3.0.0
+aiogram>=3.0.0
 
-    (не нужно перечислять import).
+(no need to list imports).
 
-Шаг 3. Создание файла .env
+Step 3. Create a .env file
 
-В корневой папке проекта создайте файл .env со следующим содержимым:
+In the project's root folder, create a .env file with the following contents:
 env
 
-BOT_TOKEN=ваш_токен_бота
+BOT_TOKEN=your_bot_token
 ADMIN_IDS=123456789,987654321
 PROVIDER_TOKEN=
 
-    BOT_TOKEN — обязателен.
+BOT_TOKEN — Required.
 
-    ADMIN_IDS — список числовых Telegram ID администраторов через запятую (без пробелов). Обязателен.
+ADMIN_IDS — A comma-separated list of numeric Telegram administrator IDs (no spaces). Required.
 
-    PROVIDER_TOKEN — опционально. Для приёма обычных платежей (USD, EUR) укажите токен от @BotFather. Для Telegram Stars оставьте пустым (или закомментируйте).
+PROVIDER_TOKEN — Optional. To accept regular payments (USD, EUR), specify the token from @BotFather. For Telegram Stars, leave blank (or comment it out).
 
-Шаг 4. Настройка контакта техподдержки
+Step 4. Setting up a support contact
 
-В файле bot.py найдите строку:
+In the bot.py file, find the line:
 python
 
 HELP_USERNAME = "@helpingonuser"
 
-Замените @helpingonuser на реальный юзернейм вашей службы поддержки (с символом @). Эта переменная используется в кнопке «🆘 Помощь» главного меню — по ней пользователь перейдёт в личный чат с указанным пользователем.
-Шаг 5. Запуск бота
+Replace @helpingonuser with the actual username of your support team (with the @ symbol). This variable is used in the "🆘 Help" button in the main menu—it will take the user to a private chat with the specified user.
+Step 5. Launching the bot
 bash
 
 python bot.py
 
-При первом запуске автоматически создадутся:
+The following will be automatically created upon first launch:
 
-    База данных shop.db с таблицами orders и error_logs.
+A shop.db database with the orders and error_logs tables.
 
-    Файл shop_data.json с демонстрационными товарами (если его нет).
+A shop_data.json file with demo products (if it doesn't exist).
 
-Теперь бот готов к работе.
-Использование
-Пользовательский интерфейс
+The bot is now ready to use.
+Usage
+User Interface
 
-    /start или /help — приветствие и главное меню.
+/start or /help — welcome screen and main menu.
 
-    Главное меню состоит из кнопок:
+The main menu consists of the following buttons:
 
-        📦 Товары — список категорий.
+📦 Products — a list of categories.
 
-        👤 Профиль — ваши последние заказы.
+👤 Profile — your recent orders.
 
-        📊 Статистика — общая статистика магазина (доступна всем).
+📊 Statistics — general store statistics (available to everyone).
 
-        📄 Политика конфиденциальности — текст политики.
+📄 Privacy Policy — policy text.
 
-        📜 Условия соглашения — текст условий.
+📜 Terms and Conditions — terms and conditions text.
 
-        🆘 Помощь — прямая ссылка на техподдержку (юзернейм задаётся в коде).
+🆘 Help — direct link to technical support (username is specified in the code).
 
-Процесс покупки
+Purchase Process
 
-    Выберите категорию, затем товар.
+Select a category, then a product.
 
-    На карточке товара нажмите ✅ Купить.
+On the product page, click ✅ Buy.
 
-    Подтвердите покупку.
+Confirm the purchase.
 
-Дальнейшие шаги зависят от типа товара:
-🔹 Для товаров типа stars и premium
+Next steps depend on the product type:
+🔹 For stars and premium products
 
-    Бот попросит ввести @username получателя (например, @ivan). Внимательно проверьте username — возврат не делается при ошибке.
+The bot will ask you to enter the recipient's username (e.g., @ivan). Please check the username carefully — refunds are not issued if the username is incorrect.
 
-    После ввода будет отправлен счёт (инвойс) через Telegram Payments.
+After entering the username, an invoice will be sent via Telegram Payments.
 
-    Если товар типа stars — после успешной оплаты бот сразу уведомит о начислении звёзд.
+For stars products, the bot will immediately notify you of the stars awarded after successful payment.
 
-    Если товар типа premium — после оплаты заказ переходит в статус paid, и администратор должен вручную выдать ключ через команду /deliver.
+If the product is premium, the order status changes to paid after payment, and the administrator must manually issue the key using the /deliver command.
 
-🔸 Для товаров типов secret и manual
+🔸 For secret and manual products
 
-    После подтверждения покупки создаётся заказ со статусом pending.
+After the purchase is confirmed, an order is created with a pending status.
 
-    Бот выдаёт инструкцию по оплате (ручной метод: карта, криптовалюта и т.п.) и показывает кнопку «Оплатил(а)».
+The bot provides payment instructions (manual method: card, cryptocurrency, etc.) and displays the "Paid" button.
 
-    Вы оплачиваете внешним способом и нажимаете кнопку.
+You pay using an external payment method and click the button.
 
-    Заказ переходит в статус paid, администратор получает уведомление.
+The order status changes to paid, and the administrator receives a notification.
 
-    Администратор выдаёт товар через /deliver (ключ или мануал отправляется вам в чат).
+The administrator issues the product using /deliver (the key or manual is sent to you in chat).
 
-Административные команды
+Administrative Commands
 
-Все команды доступны только пользователям, чьи ID перечислены в ADMIN_IDS.
-Команда	Описание
-/orders	Показать последние 20 заказов (всех пользователей).
-/errors	Показать последние 20 ошибок из лога. Добавьте full после команды, чтобы увидеть полный стек трейса.
-/deliver <order_id>	Выдать товар по заказу. Для товаров с секретами берётся первый ключ из массива secrets и отправляется пользователю.
-/addproduct <категория> <item_key> <type> <price> <currency> <title>	Добавить новый товар. Пример: /addproduct vpn vpn_fr secret 5 USD "VPN — France".
-/addsecret <категория> <item_key> <secret>	Добавить один секрет (ключ) к уже существующему товару.
-/addmanuals <категория> <item_key> <manual1;manual2;...>	Добавить названия мануалов (для товара типа manual).
-/ping	Проверка работоспособности — ответит pong.
-Структура данных
-Файл shop_data.json
+All commands are available only to users whose IDs are listed in ADMIN_IDS.
+Command Description
+/orders Show the last 20 orders (all users).
+/errors Show the last 20 errors from the log. Add "full" after the command to see the full stack trace.
+/deliver <order_id> Issue the product for the order. For products with secrets, the first key from the secrets array is taken and sent to the user.
+/addproduct <category> <item_key> <type> <price> <currency> <title> Add a new product. Example: /addproduct vpn vpn_fr secret 5 USD "VPN — France".
+/addsecret <category> <item_key> <secret> Add one secret (key) to an existing product.
+/addmanuals <category> <item_key> <manual1;manual2;...> Add manual names (for manual products).
+/ping Functionality check — pong will respond.
+Data Structure
+Shop_data.json File
 
-Хранит все товары по категориям. Каждый товар имеет поля:
+Stores all products by category. Each product has the following fields:
 
-    title — название,
+title — name,
 
-    price — цена (число),
+price — price (number),
 
-    currency — валюта (USD, EUR, XTR и т.д.),
+currency — currency (USD, EUR, XTR, etc.),
 
-    type — тип: secret, manual, stars, premium,
+type — type: secret, manual, stars, premium,
 
-    secrets — массив ключей (для типов secret, manual, premium),
+secrets — array of keys (for secret, manual, premium types),
 
-    manuals — массив названий мануалов (только для типа manual),
+manuals — array of manual names (manual only),
 
-    stars — количество звёзд (только для типа stars).
+stars — number of stars (stars only).
 
-База данных shop.db
+Shop.db Database
 
-    Таблица orders — все заказы с полями: id, user_id, username, cat, item, price, currency, type, status, target_username, secret, created_at, updated_at.
+Orders Table — all orders with the following fields: id, user_id, username, cat, item, price, currency, type, status, target_username, secret, created_at, updated_at.
 
-    Таблица error_logs — логи ошибок: id, created_at, level, message, traceback.
+The error_logs table contains error logs: id, created_at, level, message, and traceback.
 
-Особенности реализации
+Implementation Features
 
-    Загрузка переменных окружения из .env выполняется вручную (без библиотеки python-dotenv), но при желании её можно добавить.
+Loading environment variables from .env is done manually (without the python-dotenv library), but it can be added if desired.
 
-    Используется FSM (Finite State Machine) для пошагового ввода username.
+FSM (Finite State Machine) is used for step-by-step username input.
 
-    Для валюты XTR (Telegram Stars) корректно вычисляется сумма (передаётся целое число звёзд, а не умноженное на 100).
+For the XTR (Telegram Stars) currency, the amount is calculated correctly (an integer number of stars is passed, not a multiplier by 100).
 
-    Кнопка «Оплатил(а)» защищена от повторных нажатий (проверка статуса заказа).
+The "Paid" button is protected from repeated clicks (order status check).
 
-    Логи ошибок пишутся одновременно в консоль и в БД.
+Error logs are written simultaneously to the console and to the database.
 
-Возможные проблемы и их решение
-❌ Ошибка PAYMENT_PROVIDER_INVALID
+Potential Issues and Solutions
+❌ PAYMENT_PROVIDER_INVALID Error
 
-    Проверьте, что PROVIDER_TOKEN в .env указан верно.
+Check that PROVIDER_TOKEN is specified correctly in .env.
 
-    Для товаров с currency = "XTR" (Stars) токен должен быть пустой строкой.
+For products with currency = "XTR" (Stars), the token must be an empty string.
 
-    Для обычных валют получите новый токен у @BotFather и вставьте в .env.
+For regular currencies, get a new token from @BotFather and paste it into .env.
 
-❌ Бот не видит переменные из .env
+❌ The bot doesn't see variables from .env
 
-    Убедитесь, что файл .env находится в той же папке, что и bot.py.
+Make sure the .env file is in the same folder as bot.py.
 
-    Проверьте, что в файле нет лишних пробелов, кавычек или комментариев (кроме # в начале строки). Формат строго KEY=value.
+Check that the file doesn't contain any extra spaces, quotes, or comments (except for # at the beginning of a line). The format is strictly KEY=value.
 
-❌ Не приходит уведомление о выдаче товара
+❌ I don't receive a delivery notification
 
-    Пользователь должен был ранее отправить /start боту, иначе бот не сможет ему написать.
+The user must have previously sent /start to the bot, otherwise the bot won't be able to message them.
 
-    Если выдаётся ошибка при отправке, она попадёт в лог ошибок, который можно посмотреть через /errors.
+If an error occurs during sending, it will be logged in the error log, which can be viewed via /errors.
 
-Настройка техподдержки
+Technical Support Setup
 
-Вся настройка контакта поддержки сводится к изменению одной строки в коде:
+Setting up the support contact is as simple as changing one line of code:
 python
 
-HELP_USERNAME = "@helpingonuser"   # замените на нужный юзернейм
+HELP_USERNAME = "@helpingonuser" # replace with the desired username
 
-Эта переменная используется в кнопке «🆘 Помощь» в главном меню, а также в приветственном сообщении. После изменения переменной бот автоматически будет использовать новый контакт.
-Лицензия
+This variable is used in the "🆘 Help" button in the main menu, as well as in the welcome message. After changing the variable, the bot will automatically use the new contact.
+License
 
-Автор: macros
-Контакты для связи с разработчиком: @imnotyou7 - telegram.
+This project is distributed "as is" (without warranty). You are free to use, modify, and distribute it for any purpose.
+
+Author: macro
+
+To contact the developer: Telegram - @imnotyou3
